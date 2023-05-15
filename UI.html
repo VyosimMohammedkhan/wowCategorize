@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Interaction</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container mt-4">
+    <h1>wowCat</h1>
+    <div class="form-group">
+      <label for="urlInput">URL:</label>
+      <input type="text" class="form-control" id="urlInput" placeholder="http://example.com/">
+    </div>
+    <button class="btn btn-primary" onclick="postData()">Submit</button>
+    <div id="matchCountTable" class="mt-4">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>About</th>
+            <th>Contact</th>
+            <th>Team</th>
+            <th>Investor</th>
+            <th>Product</th>
+            <th>Career</th>
+            <th>News</th>
+            <th>ECommerce</th>
+            <th>Resources</th>
+            <th>Pricing</th>
+            <th>Social</th>
+            <th>Portal</th>
+            <th>Legal</th>
+            <th>Blog</th>
+          </tr>
+          <tbody>
+            <!-- Table rows will be populated dynamically -->
+          </tbody>
+        </table>
+    </div>
+<br><br><br>
+    <div id="metaDataTable" class="mt-4">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>metaTitleContent</th>
+            <th>metaContenType</th>
+            <th>metaKeywords</th>
+            <th>metaDescription</th>
+            <th>metaOgTitle</th>
+            <th>metaOgDescription</th>
+            <th>metaOgUrl</th>
+            <th>metaOgSitename</th>
+            <th>metaProfileUsername</th>
+            <th>metaProfileFirstname</th>
+            <th>metaprofileLastname</th>
+            <th>languageCharSet</th>
+            <th>contentLanguage</th>
+            <th>languageLocale</th>
+            <th>languageHtmtlLang</th>
+            <th>copyright</th>
+          </tr>
+          <tbody>
+            <!-- Table rows will be populated dynamically -->
+          </tbody>
+        </table>
+    </div>
+    <br><br>
+    <div id="responseTable" class="mt-4">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Site</th>
+            <th>Url</th>
+            <th>linkText</th>
+            <th>About</th>
+            <th>Contact</th>
+            <th>Team</th>
+            <th>Investor</th>
+            <th>Product</th>
+            <th>Career</th>
+            <th>News</th>
+            <th>ECommerce</th>
+            <th>Resources</th>
+            <th>Pricing</th>
+            <th>Social</th>
+            <th>Portal</th>
+            <th>Legal</th>
+            <th>Blog</th>
+            <th>keywordFound</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Table rows will be populated dynamically -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  
+  <script>
+    function postData() {
+      const url = document.getElementById("urlInput").value;
+      axios.post("http://localhost:5000/wowCat", { url: url })
+        .then(response => {
+          displayMatchCount(response.data[2]);
+          displayMetaData(response.data[1]);
+          displayData(response.data[0]);
+          //function to display metadata
+          //function to displaye total count
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+
+    function displayData(data) {
+      const tableBody = document.querySelector("#responseTable tbody");
+      tableBody.innerHTML = "";
+
+      data.forEach(item => {
+        const row = document.createElement("tr");
+        const field1Cell = document.createElement("td");
+        const field2Cell = document.createElement("td");
+        const field3Cell = document.createElement("td");
+        const field4Cell = document.createElement("td");
+        const field5Cell = document.createElement("td");
+        const field6Cell = document.createElement("td");
+        const field7Cell = document.createElement("td");
+        const field8Cell = document.createElement("td");
+        const field9Cell = document.createElement("td");
+        const field10Cell = document.createElement("td");
+        const field11Cell = document.createElement("td");
+        const field12Cell = document.createElement("td");
+        const field13Cell = document.createElement("td");
+        const field14Cell = document.createElement("td");
+        const field15Cell = document.createElement("td");
+        const field16Cell = document.createElement("td");
+        const field17Cell = document.createElement("td");
+        const field18Cell = document.createElement("td");
+
+        field1Cell.textContent = item.Site;
+        field2Cell.textContent = item.HREF;
+        field3Cell.textContent = item.linkText;
+        field4Cell.textContent = item.About
+        field5Cell.textContent = item.Contact;
+        field6Cell.textContent = item.Team;
+        field7Cell.textContent = item.Investor;
+        field8Cell.textContent = item.Product;
+        field9Cell.textContent = item.Career;
+        field10Cell.textContent = item.News;
+        field11Cell.textContent = item.ECommerce;
+        field12Cell.textContent = item.Resources;
+        field13Cell.textContent = item.Pricing;
+        field14Cell.textContent = item.Social;
+        field15Cell.textContent = item.Portal;
+        field16Cell.textContent = item.Legal;
+        field17Cell.textContent = item.Blog;
+        field18Cell.textContent = item.keywordFound;
+
+        row.appendChild(field1Cell);
+        row.appendChild(field2Cell);
+        row.appendChild(field3Cell);
+        row.appendChild(field4Cell);
+        row.appendChild(field5Cell);
+        row.appendChild(field6Cell);
+        row.appendChild(field7Cell);
+        row.appendChild(field8Cell);
+        row.appendChild(field9Cell);
+        row.appendChild(field10Cell);
+        row.appendChild(field11Cell);
+        row.appendChild(field12Cell);
+        row.appendChild(field13Cell);
+        row.appendChild(field14Cell);
+        row.appendChild(field15Cell);
+        row.appendChild(field16Cell);
+        row.appendChild(field17Cell);
+        row.appendChild(field18Cell);
+        tableBody.appendChild(row);
+      });
+    }
+
+    function displayMatchCount(data) {
+      const tableBody = document.querySelector("#matchCountTable tbody");
+      tableBody.innerHTML = "";
+
+        const row = document.createElement("tr");
+        const field1Cell = document.createElement("td");
+        const field2Cell = document.createElement("td");
+        const field3Cell = document.createElement("td");
+        const field4Cell = document.createElement("td");
+        const field5Cell = document.createElement("td");
+        const field6Cell = document.createElement("td");
+        const field7Cell = document.createElement("td");
+        const field8Cell = document.createElement("td");
+        const field9Cell = document.createElement("td");
+        const field10Cell = document.createElement("td");
+        const field11Cell = document.createElement("td");
+        const field12Cell = document.createElement("td");
+        const field13Cell = document.createElement("td");
+        const field14Cell = document.createElement("td");
+
+        field1Cell.textContent = data.About
+        field2Cell.textContent = data.Contact;
+        field3Cell.textContent = data.Team;
+        field4Cell.textContent = data.Investor;
+        field5Cell.textContent = data.Product;
+        field6Cell.textContent = data.Career;
+        field7Cell.textContent = data.News;
+        field8Cell.textContent = data.ECommerce;
+        field9Cell.textContent = data.Resources;
+        field10Cell.textContent = data.Pricing;
+        field11Cell.textContent = data.Social;
+        field12Cell.textContent = data.Portal;
+        field13Cell.textContent = data.Legal;
+        field14Cell.textContent = data.Blog;
+
+        row.appendChild(field1Cell);
+        row.appendChild(field2Cell);
+        row.appendChild(field3Cell);
+        row.appendChild(field4Cell);
+        row.appendChild(field5Cell);
+        row.appendChild(field6Cell);
+        row.appendChild(field7Cell);
+        row.appendChild(field8Cell);
+        row.appendChild(field9Cell);
+        row.appendChild(field10Cell);
+        row.appendChild(field11Cell);
+        row.appendChild(field12Cell);
+        row.appendChild(field13Cell);
+        row.appendChild(field14Cell);
+        tableBody.appendChild(row);
+    
+    }
+
+
+    function displayMetaData(data) {
+      const tableBody = document.querySelector("#metaDataTable tbody");
+      tableBody.innerHTML = "";
+
+        const row = document.createElement("tr");
+        const field1Cell = document.createElement("td");
+        const field2Cell = document.createElement("td");
+        const field3Cell = document.createElement("td");
+        const field4Cell = document.createElement("td");
+        const field5Cell = document.createElement("td");
+        const field6Cell = document.createElement("td");
+        const field7Cell = document.createElement("td");
+        const field8Cell = document.createElement("td");
+        const field9Cell = document.createElement("td");
+        const field10Cell = document.createElement("td");
+        const field11Cell = document.createElement("td");
+        const field12Cell = document.createElement("td");
+        const field13Cell = document.createElement("td");
+        const field14Cell = document.createElement("td");
+        const field15Cell = document.createElement("td");
+        const field16Cell = document.createElement("td");
+
+        field1Cell.textContent = data.metaTitleContent
+        field2Cell.textContent = data.metaContenType;
+        field3Cell.textContent = data.metaKeywords;
+        field4Cell.textContent = data.metaDescription;
+        field5Cell.textContent = data.metaOgTitle;
+        field6Cell.textContent = data.metaOgDescription;
+        field7Cell.textContent = data.metaOgUrl;
+        field8Cell.textContent = data.metaOgSitename;
+        field9Cell.textContent = data.metaProfileUsername;
+        field10Cell.textContent = data.metaProfileFirstname;
+        field11Cell.textContent = data.metaprofileLastname;
+        field12Cell.textContent = data.languageCharSet;
+        field13Cell.textContent = data.contentLanguage;
+        field14Cell.textContent = data.languageLocale;
+        field15Cell.textContent = data.languageHtmtlLang;
+        field16Cell.textContent = data.copyright;
+
+        row.appendChild(field1Cell);
+        row.appendChild(field2Cell);
+        row.appendChild(field3Cell);
+        row.appendChild(field4Cell);
+        row.appendChild(field5Cell);
+        row.appendChild(field6Cell);
+        row.appendChild(field7Cell);
+        row.appendChild(field8Cell);
+        row.appendChild(field9Cell);
+        row.appendChild(field10Cell);
+        row.appendChild(field11Cell);
+        row.appendChild(field12Cell);
+        row.appendChild(field13Cell);
+        row.appendChild(field14Cell);
+        row.appendChild(field15Cell);
+        row.appendChild(field16Cell);
+
+        tableBody.appendChild(row);
+    
+    }
+  </script>
+</body>
+
+</html>
