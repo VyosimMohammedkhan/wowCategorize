@@ -87,12 +87,12 @@ async function countMatchingKeywordsFromGivenSetOfLinks(PageUrlsAndUrlTexts, url
 
 async function checkKeywordsOnUrl(urlHrefAndTextArray) {
   const urlAndTextArray = urlHrefAndTextArray.split(",");
-  let Categories = { "HREF": urlAndTextArray[0], "linkText": urlAndTextArray[1].replace(/\r?\n|\r/g, ""), "About": 0, "Contact": 0, "Team": 0, "Investor": 0, "Product": 0, "Career": 0, "News": 0, "ECommerce": 0, "Resources": 0, "Pricing": 0, "Social": 0, "Portal": 0, "Legal": 0, "Blog": 0, "keywordFound":"None"};
+  let Categories = { "HREF": urlAndTextArray[0], "linkText": urlAndTextArray[1].replace(/\r?\n|\r/g, ""), "About": "", "Contact": "", "Team": "", "Investor": "", "Product": "", "Career": "", "News": "", "ECommerce": "", "Resources": "", "Pricing": "", "Social": "", "Portal": "", "Legal": "", "Blog": "", "keywordFound":"None"};
   let keywordsArry = Object.entries(keywords);
   Categories.linkText=Categories.linkText.replace(/\s+/g, ' ').trim();
   for (let [category, keywordset] of keywordsArry) {
     const word = category.toString()
-    // let count=Categories[`${word}`];     
+    // let count=Categories[`${word}`];
     for (let keyword of keywordset) {
       if (Categories.HREF.toLowerCase().includes(keyword.toLowerCase()) || Categories.linkText.toLowerCase().includes(keyword.toLowerCase())) {
         Categories[`${word}`] = 1;
