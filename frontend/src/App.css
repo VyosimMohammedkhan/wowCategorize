@@ -1,7 +1,36 @@
+.custom-tooltip1 {
+  width: 100%;
+  height: 45px;
+  border: 1px solid cornflowerblue;
+  overflow:auto;
+}
+.custom-tooltip1 p {
+  margin: 5px;
+  white-space:nowrap;
+  font-weight: bold;
+  text-align: left;
+}
+
+.custom-tooltip {
+  width: 100%;
+  height: 70px;
+  border: 1px solid cornflowerblue;
+  overflow:auto;
+}
+
+.custom-tooltip p {
+  margin: 5px;
+  white-space: nowrap;
+}
+
+.custom-tooltip p {
+  font-weight: bold;
+}
+
 .App {
   text-align: center;
 }
-
+/* 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -11,11 +40,11 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,13 +66,15 @@
   }
 }
 
-
+body{
+  background-color:#0a0a0a;
+  width: 100vw;
+}
 .mycontainer {
   display: flex;
-  height: 75vh;
-  width: 99vw;
-  margin: 30px 5px 5px 5px;;
-
+  width: 98vw;
+  margin: 30px 5px 5px 5px;
+  background-color: #0a0a0a;
 }
 
 .nav{
@@ -52,11 +83,11 @@
   position: relative;
 }
 .left {
-  flex: 73%; /* Set the first div to take 80% width */
+  flex: 73%
 }
 
 .right {
-  flex: 27%; /* Set the second div to take 20% width */
+  flex: 27%; 
   margin-left: 5px;
 }
 
@@ -66,7 +97,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  background-color: #f1f1f1;
+  background-color: #000000;
+  border-bottom: 1px solid #dfdddd;
 }
 
 .navbar__left {
@@ -88,7 +120,7 @@
 .navbar__search {
   padding: 5px;
   margin-right: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #b8b2b2;
   border-radius: 4px;
 }
 
@@ -106,4 +138,43 @@
 .navbar__button:hover{
   background-color: rgb(23, 105, 172);
   transform: scale(1.2);
+}
+
+.ag-custom-loading {
+  height: 100%;
+  width: 100%;
+  background-image: url(loading.gif);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  position: absolute;
+  top: 50%;
+}
+
+.ag-custom-loading1 {
+  /* height: 90vh;
+  width: 100%; */
+  /* justify-content: center;
+  align-items: center; */
+  background-image: url(loadnew.gif);
+  /* background-repeat: no-repeat; */
+  background-position-x: center;
+  /* position: absolute;
+  margin-top: 10px; */
+  text-decoration-color: whitesmoke;
+}
+
+.loadingText {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  padding-top: 150px; 
+  color: white;
+}
+
+#afterSubmitDiv{
+  z-index: 10;
+}
+
+#beforeSubmitDiv{
+  z-index: 100;
 }
